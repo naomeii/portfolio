@@ -1,0 +1,174 @@
+.page {
+  width: 900px;
+  max-width: calc(100% - 40px);
+  margin: 30px auto;
+  padding: 25px 35px;
+
+  background: #fff;
+  border: 2px solid #ff69b4;
+
+  color: #222;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  color: #ff69b4;
+  font-family: "Times New Roman", serif;
+  font-size: 48px;
+}
+
+.header p {
+  margin: 5px 0 15px;
+}
+
+nav a,
+a {
+  color: #ff1493;
+}
+
+nav a:hover,
+a:hover {
+  color: #000;
+}
+
+main {
+  margin-top: 35px;
+}
+
+section {
+  padding: 20px 10px;
+}
+
+section h2 {
+  color: #ff1493;
+  font-family: "Times New Roman", serif;
+  text-align: center;
+}
+
+.about {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.about-photo {
+  flex-shrink: 0;
+}
+
+.about-photo img {
+  width: 180px;
+  border: 2px solid #ff69b4;
+}
+
+.about-text {
+  flex: 2;
+  text-align: left;
+}
+
+.interests {
+  flex: 1;
+  padding-left: 25px;
+  border-left: 1px solid #ffb6d9;
+  text-align: left;
+}
+
+.interests p {
+  margin: 7px 0;
+}
+
+.interests p:first-child {
+  color: #ff1493;
+  text-align: center;
+}
+
+
+.project {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 20px;
+
+  border: 1px solid #ff69b4;
+  background: #fffafa;
+  text-align: center;
+}
+
+.project h3 {
+  margin-top: 0;
+  color: #ff1493;
+  font-family: "Times New Roman", serif;
+  font-size: 24px;
+}
+
+.tech {
+  color: #777;
+  font-size: 13px;
+}
+
+.project-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.project-navigation button {
+  border: none;
+  background: none;
+  padding: 0;
+
+  color: #ff1493;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.project-navigation button:hover {
+  color: #000;
+}
+
+
+hr {
+  border: 0;
+  border-top: 1px solid #ffb6d9;
+  margin: 10px 0;
+}
+
+footer {
+  margin-top: 35px;
+  padding-top: 15px;
+  border-top: 1px solid #ffb6d9;
+  text-align: center;
+  color: #777;
+  font-size: 12px;
+}
+
+
+
+
+
+
+@media (max-width: 650px) {
+  .about {
+    display: block;
+  }
+
+  .about-photo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .interests {
+    margin-top: 25px;
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid #ffb6d9;
+    padding-top: 20px;
+  }
+}
