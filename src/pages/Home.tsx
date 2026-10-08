@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { Decorations, MenuBar } from '../components/Menu'
 import '../App.css'
 
 const projects = [
@@ -38,55 +40,30 @@ const projects = [
   },
 ]
 
-type MenuName = 'file' | 'view' | 'favorites' | 'help' | null
-
 function Home() {
   const [currentProject, setCurrentProject] = useState(0)
-  const [openMenu, setOpenMenu] = useState<MenuName>(null)
 
   const [minimized, setMinimized] = useState(false)
   const [maximized, setMaximized] = useState(false)
 
   const [showClosePopup, setShowClosePopup] = useState(false)
-  const [showHelpPopup, setShowHelpPopup] = useState(false)
-
-  const [showKitty, setShowKitty] = useState(true)
-  const [showSparkles, setShowSparkles] = useState(true)
 
   const project = projects[currentProject]
   const [showPhotoPopup, setShowPhotoPopup] = useState(false)
+  const location = useLocation()
 
-  const toggleMenu = (menu: MenuName) => {
-    setOpenMenu(openMenu === menu ? null : menu)
-  }
-
-  const goToSection = (section: string) => {
-    setOpenMenu(null)
+  useEffect(() => {
+    if (!location.hash) return
 
     document
-      .getElementById(section)
+      .getElementById(location.hash.slice(1))
       ?.scrollIntoView({ behavior: 'smooth' })
-  }
+  }, [location.hash])
 
   return (
     <div className="site">
 
-      {/*decorative elements*/}
-
-      {showSparkles && (
-        <>
-          <div className="sparkle sparkle-1">✧</div>
-          <div className="sparkle sparkle-2">☆</div>
-          <div className="sparkle sparkle-3">♡</div>
-          <div className="sparkle sparkle-4">✦</div>
-        </>
-      )}
-
-      {showKitty && (
-        <div className="walking-kitty" aria-hidden="true">
-          ฅ^•ﻌ•^ฅ
-        </div>
-      )}
+      <Decorations />
 
       {/*minimized taskbar*/}
 
@@ -142,120 +119,7 @@ function Home() {
 
           </div>
 
-          {/*menu bar*/}
-
-          <div className="menu-bar">
-
-            {/* FILE */}
-
-            <div className="menu-container">
-
-              <button
-                className="menu-button"
-                onClick={() => toggleMenu('file')}
-              >
-                File
-              </button>
-
-              {openMenu === 'file' && (
-                <div className="dropdown">
-
-                  <button
-                    onClick={() => goToSection('links')}
-                  >
-                    ♡ contact me
-                  </button>
-
-                </div>
-              )}
-
-            </div>
-
-            {/* VIEW */}
-
-            <div className="menu-container">
-
-              <button
-                className="menu-button"
-                onClick={() => toggleMenu('view')}
-              >
-                View
-              </button>
-
-              {openMenu === 'view' && (
-                <div className="dropdown">
-
-                  <button
-                    onClick={() => setShowSparkles(!showSparkles)}
-                  >
-                    {showSparkles ? '✓' : '　'} sparkles
-                  </button>
-
-                  <button
-                    onClick={() => setShowKitty(!showKitty)}
-                  >
-                    {showKitty ? '✓' : '　'} little kitty
-                  </button>
-
-                </div>
-              )}
-
-            </div>
-
-            {/* FAVORITES */}
-
-            <div className="menu-container">
-
-              <button
-                className="menu-button"
-                onClick={() => toggleMenu('favorites')}
-              >
-                Favorites
-              </button>
-
-              {openMenu === 'favorites' && (
-                <div className="dropdown">
-
-                  <button
-                    onClick={() => goToSection('about')}
-                  >
-                    ♡ about me
-                  </button>
-
-                  <button
-                    onClick={() => goToSection('projects')}
-                  >
-                    ♡ my projects
-                  </button>
-
-                  <button
-                    onClick={() => goToSection('life')}
-                  >
-                    ♡ my life
-                  </button>
-
-                </div>
-              )}
-
-            </div>
-
-            {/* HELP */}
-
-            <div className="menu-container">
-
-              <button
-                className="menu-button"
-                onClick={() => {
-                  setOpenMenu(null)
-                  setShowHelpPopup(true)
-                }}
-              >
-                Help
-              </button>
-
-            </div>
-
-          </div>
+          <MenuBar />
 
           {showPhotoPopup && (
             <div className="popup-overlay">
@@ -562,55 +426,6 @@ function Home() {
                   onClick={() => setShowClosePopup(false)}
                 >
                   never!
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      )}
-
-      {/*HELP POPUP*/}
-
-      {showHelpPopup && (
-        <div className="popup-overlay">
-
-          <div className="retro-popup">
-
-            <div className="popup-title">
-              ♡ mimi.dev help
-              <button
-                onClick={() => setShowHelpPopup(false)}
-                aria-label="Close help"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="popup-content">
-
-              <p>
-                welcome to my little corner of the internet ♡
-              </p>
-
-              <p>
-                this site is a personal portfolio built with
-                React + TypeScript.
-              </p>
-
-              <p>
-                ✧
-              </p>
-
-              <div className="popup-buttons">
-
-                <button
-                  onClick={() => setShowHelpPopup(false)}
-                >
-                  ok ♡
                 </button>
 
               </div>

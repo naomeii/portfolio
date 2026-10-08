@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Decorations, MenuBar } from '../components/Menu'
 import '../App.css'
 
 function XDMoD() {
@@ -7,6 +8,7 @@ function XDMoD() {
 
   return (
     <div className="project-page">
+      <Decorations />
       <div className="project-window">
         <div className="title-bar">
           <div className="window-title">xdmod.exe</div>
@@ -20,12 +22,7 @@ function XDMoD() {
           </div>
         </div>
 
-        <div className="menu-bar">
-          <a href="/">File</a>
-          <a href="/">Edit</a>
-          <a href="/">View</a>
-          <a href="/">Help</a>
-        </div>
+        <MenuBar />
 
         <header className="project-header">
           <h1>♡ XDMoD AI Classifier ♡</h1>

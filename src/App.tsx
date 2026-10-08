@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import { MenuProvider } from './components/Menu'
 import Home from './pages/Home'
 import VintageHunter from './pages/VintageHunter'
 import XDMoD from './pages/XDMoD'
@@ -10,6 +11,7 @@ import GuessTheSong from './pages/GuessTheSong'
 function App() {
   return (
     <BrowserRouter>
+      <MenuProvider>
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -34,6 +36,7 @@ function App() {
         />
 
       </Routes>
+      </MenuProvider>
     </BrowserRouter>
   )
 }
