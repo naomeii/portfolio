@@ -95,6 +95,9 @@
   display: flex;
   gap: 4px;
 
+  position: relative;
+  z-index: 5;
+
   padding: 4px 8px;
 
   background: #f6d3e2;
@@ -103,6 +106,8 @@
 
   font-family: "Times New Roman", serif;
   font-size: 14px;
+
+  overflow: visible;
 }
 
 .menu-container {
@@ -1121,8 +1126,14 @@ footer {
   }
 
   .menu-bar {
+    flex-wrap: wrap;
     gap: 12px;
-    overflow-x: auto;
+    overflow: visible;
+  }
+
+  .menu-container:nth-child(n + 3) .dropdown {
+    left: auto;
+    right: 0;
   }
 
   .header h1 {
