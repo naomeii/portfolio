@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Decorations, MenuBar } from '../components/Menu'
+import { Window } from '../components/Window'
 import '../App.css'
 
 function XDMoD() {
@@ -9,19 +10,7 @@ function XDMoD() {
   return (
     <div className="project-page">
       <Decorations />
-      <div className="project-window">
-        <div className="title-bar">
-          <div className="window-title">xdmod.exe</div>
-
-          <div className="window-controls">
-            <button aria-label="Minimize">—</button>
-            <button aria-label="Maximize">□</button>
-            <a href="/" aria-label="Close">
-              ×
-            </a>
-          </div>
-        </div>
-
+      <Window title="xdmod.exe" className="project-window">
         <MenuBar />
 
         <header className="project-header">
@@ -170,7 +159,7 @@ function XDMoD() {
           </div>
 
         </main>
-      </div>
+      </Window>
 
         {showAchievement && (
             <div className="achievement-toast">

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Decorations, MenuBar } from '../components/Menu'
+import { Window } from '../components/Window'
 import '../App.css'
 
 function InstagramDegrees() {
@@ -9,19 +10,7 @@ function InstagramDegrees() {
   return (
     <div className="project-page">
       <Decorations />
-      <div className="project-window">
-        <div className="title-bar">
-          <div className="window-title">instagram-degsep.exe</div>
-
-          <div className="window-controls">
-            <button aria-label="Minimize">—</button>
-            <button aria-label="Maximize">□</button>
-            <a href="/" aria-label="Close">
-              ×
-            </a>
-          </div>
-        </div>
-
+      <Window title="instagram-degsep.exe" className="project-window">
         <MenuBar />
 
         <header className="project-header">
@@ -157,7 +146,7 @@ function InstagramDegrees() {
           </div>
 
         </main>
-      </div>
+      </Window>
 
       {showAchievement && (
         <div className="achievement-toast">

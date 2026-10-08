@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Decorations, MenuBar } from '../components/Menu'
+import { Window } from '../components/Window'
 import '../App.css'
 
 const projects = [
@@ -43,11 +44,6 @@ const projects = [
 function Home() {
   const [currentProject, setCurrentProject] = useState(0)
 
-  const [minimized, setMinimized] = useState(false)
-  const [maximized, setMaximized] = useState(false)
-
-  const [showClosePopup, setShowClosePopup] = useState(false)
-
   const project = projects[currentProject]
   const [showPhotoPopup, setShowPhotoPopup] = useState(false)
   const location = useLocation()
@@ -65,60 +61,7 @@ function Home() {
 
       <Decorations />
 
-      {/*minimized taskbar*/}
-
-      {minimized && (
-        <button
-          className="taskbar-window"
-          onClick={() => setMinimized(false)}
-        >
-          🖥 mimi.dev
-        </button>
-      )}
-
-      {/*main window*/}
-
-      {!minimized && (
-        <div className={`window ${maximized ? 'window-maximized' : ''}`}>
-
-          {/* title bar */}
-
-          <div className="title-bar">
-
-            <div className="window-title">
-              mimi.dev
-            </div>
-
-            <div className="window-controls">
-
-              <button
-                type="button"
-                aria-label="Minimize window"
-                onClick={() => setMinimized(true)}
-              >
-                —
-              </button>
-
-              <button
-                type="button"
-                aria-label="Maximize window"
-                onClick={() => setMaximized(!maximized)}
-              >
-                {maximized ? '❐' : '□'}
-              </button>
-
-              <button
-                type="button"
-                aria-label="Close window"
-                onClick={() => setShowClosePopup(true)}
-              >
-                ×
-              </button>
-
-            </div>
-
-          </div>
-
+      <Window title="mimi.dev" className="window">
           <MenuBar />
 
           {showPhotoPopup && (
@@ -386,56 +329,7 @@ function Home() {
             <p>last updated: oct 2026</p>
           </footer>
 
-        </div>
-      )}
-
-      {/*CLOSE POPUP*/}
-
-      {showClosePopup && (
-        <div className="popup-overlay">
-
-          <div className="retro-popup">
-
-            <div className="popup-title">
-              ♡ mimi.dev
-              <button
-                onClick={() => setShowClosePopup(false)}
-                aria-label="Close popup"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="popup-content">
-
-              <p>
-                are you sure you want to close mimi.dev?
-              </p>
-
-              <div className="popup-buttons">
-
-                <button
-                  onClick={() => {
-                    setShowClosePopup(false)
-                  }}
-                >
-                  nope ♡
-                </button>
-
-                <button
-                  onClick={() => setShowClosePopup(false)}
-                >
-                  never!
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      )}
+      </Window>
 
     </div>
   )

@@ -628,6 +628,12 @@ hr {
   z-index: 2;
 }
 
+.project-page .project-window.window-maximized {
+  width: calc(100vw - 30px);
+  min-height: calc(100vh - 30px);
+  box-shadow: 5px 5px 0 #c77fa3;
+}
+
 .project-page .title-bar {
   display: flex;
   align-items: center;

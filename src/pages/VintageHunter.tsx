@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Decorations, MenuBar } from '../components/Menu'
+import { Window } from '../components/Window'
 import '../App.css'
 
 function VintageHunter() {
@@ -9,19 +10,7 @@ function VintageHunter() {
   return (
     <div className="project-page">
       <Decorations />
-      <div className="project-window">
-        <div className="title-bar">
-          <div className="window-title">vintage-hunter.exe</div>
-
-          <div className="window-controls">
-            <button aria-label="Minimize">—</button>
-            <button aria-label="Maximize">□</button>
-            <a href="/" aria-label="Close">
-              ×
-            </a>
-          </div>
-        </div>
-
+      <Window title="vintage-hunter.exe" className="project-window">
         <MenuBar />
 
         <header className="project-header">
@@ -175,7 +164,7 @@ function VintageHunter() {
           </div>
 
         </main>
-      </div>
+      </Window>
 
       {showAchievement && (
         <div className="achievement-toast">
