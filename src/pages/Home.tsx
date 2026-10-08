@@ -9,7 +9,7 @@ const projects = [
     name: 'Vintage Hunter',
     description:
       'I got really into vintage fashion while I was in Korea and started spending way too much time browsing resale sites for bags.',
-    tech: 'Python · Discord.py · eBay API · OpenAI · SQLite · Docker',
+    tech: 'Python · Discord · eBay API · GPT-5.4 Mini · SQLite · Docker',
     path: '/projects/vintage-hunter',
   },
   {
